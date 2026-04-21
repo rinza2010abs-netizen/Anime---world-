@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeWorld — Anime haqida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg: #0d0d14;
+      --surface: #16161f;
+      --card: #1e1e2e;
+      --accent: #e85d75;
+      --accent2: #6ec6f5;
+      --accent3: #f5c842;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --border: #2a2a3a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .logo span { color: var(--accent2); }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Anime<span>World</span></div>
+  <nav>
+    <a href="#">Bosh sahifa</a>
+    <a href="#">Janrlar</a>
+    <a href="#">Top animelar</a>
+    <a href="#">Haqida</a>
+  </nav>
+</header>
 
+<section style="text-align:center; padding:80px 20px;">
+  <h1 style="font-size:2.5rem; font-weight:800; margin-bottom:16px;">
+    Anime dunyosiga <span style="color:#e85d75;">xush kelibsiz!</span>
+  </h1>
+  <p style="color:#888899; font-size:1.1rem; margin-bottom:30px;">
+    Eng mashhur animelar va qahramonlar haqida ma'lumotlar
+  </p>
+</section>
+
+<section style="padding:40px;">
+  <h2 style="color:#6ec6f5; margin-bottom:20px;">⭐ Mashhur Animelar</h2>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px;">
+    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
+      <div style="font-size:3rem;">🧠</div>
+      <h3 style="margin:10px 0 6px;">Classroom of the Elite</h3>
+      <p style="color:#6ec6f5; font-size:0.85rem;">Psixologik / Drama</p>
+      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Ayanokoji — eng xavfli daho.</p>
+    </div>
+    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
+      <div style="font-size:3rem;">⚔️</div>
+      <h3 style="margin:10px 0 6px;">Demon Slayer</h3>
+      <p style="color:#6ec6f5; font-size:0.85rem;">Aksyon / Fantastika</p>
+      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Tanjiro oilasini himoya qiladi.</p>
+    </div>
+    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
+      <div style="font-size:3rem;">🌊</div>
+      <h3 style="margin:10px 0 6px;">Attack on Titan</h3>
+      <p style="color:#6ec6f5; font-size:0.85rem;">Dramatik / Aksyon</p>
+      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Insoniyat devlar hujumidan himoya qiladi.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center; padding:30px; border-top:1px solid #2a2a3a; color:#888899; font-size:0.85rem;">
+  © 2026 AnimeWorld · O'zbek tilida
+</footer>
+</body>
+</html>
