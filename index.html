@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AnimeWorld — Anime haqida</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet"/>
-<style>
+  <style>
     :root {
       --bg: #0d0d14;
       --surface: #16161f;
@@ -52,6 +52,120 @@
       transition: color 0.2s;
     }
     nav a:hover { color: var(--text); }
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(180deg, #1a0a1e 0%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "アニメ";
+      position: absolute;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14rem;
+      color: rgba(232,93,117,0.04);
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 36px; }
+    .search-bar {
+      display: flex;
+      max-width: 460px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+    .search-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 14px 20px;
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      outline: none;
+    }
+    .search-bar input::placeholder { color: var(--muted); }
+    .search-bar button {
+      background: var(--accent);
+      border: none;
+      padding: 0 24px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-bar button:hover { background: #c94460; }
+    .section { padding: 50px 40px; }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .genre-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pill {
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--card);
+    }
+    .pill:hover, .pill.active { border-color: var(--accent); color: var(--accent); background: rgba(232,93,117,0.08); }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .anime-card {
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .anime-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #1e1e2e, #2a1a2e);
+    }
+    .card-body { padding: 14px; }
+    .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .card-meta { display: flex; justify-content: space-between; align-items: center; }
+    .card-genre { font-size: 0.78rem; color: var(--accent2); font-weight: 600; }
+    .card-rating { font-size: 0.82rem; color: var(--accent3); font-weight: 700; }
+    .card-desc { margin-top: 8px; font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .info-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .info-icon { font-size: 2rem; margin-bottom: 12px; }
+    .info-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; color: var(--accent2); }
+    .info-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    footer { text-align: center; padding: 30px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    @media (max-width: 600px) {
+      header { padding: 14px 20px; }
+      nav { display: none; }
+      .hero h1 { font-size: 2rem; }
+      .section { padding: 36px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -64,42 +178,241 @@
     <a href="#">Haqida</a>
   </nav>
 </header>
-
-<section style="text-align:center; padding:80px 20px;">
-  <h1 style="font-size:2.5rem; font-weight:800; margin-bottom:16px;">
-    Anime dunyosiga <span style="color:#e85d75;">xush kelibsiz!</span>
-  </h1>
-  <p style="color:#888899; font-size:1.1rem; margin-bottom:30px;">
-    Eng mashhur animelar va qahramonlar haqida ma'lumotlar
-  </p>
+<section class="hero">
+  <h1>Anime dunyosiga<br/><span>xush kelibsiz!</span></h1>
+  <p>Eng mashhur animelar, janrlar va qahramonlar haqida qisqacha ma'lumotlar.</p>
+  <div class="search-bar">
+    <input type="text" placeholder="Anime qidiring..."/>
+    <button>Qidirish</button>
+  </div>
 </section>
-
-<section style="padding:40px;">
-  <h2 style="color:#6ec6f5; margin-bottom:20px;">⭐ Mashhur Animelar</h2>
-  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px;">
-    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
-      <div style="font-size:3rem;">🧠</div>
-      <h3 style="margin:10px 0 6px;">Classroom of the Elite</h3>
-      <p style="color:#6ec6f5; font-size:0.85rem;">Psixologik / Drama</p>
-      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Ayanokoji — eng xavfli daho.</p>
+<section class="section">
+  <div class="section-title">🎭 Janrlar</div>
+  <div class="genre-pills">
+    <div class="pill active">Barchasi</div>
+    <div class="pill">Aksyon</div>
+    <div class="pill">Romantika</div>
+    <div class="pill">Fantastika</div>
+    <div class="pill">Dahshat</div>
+    <div class="pill">Komediya</div>
+    <div class="pill">Sport</div>
+    <div class="pill">Misteriya</div>
+    <div class="pill">Isekai</div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title">⭐ Mashhur Animelar</div>
+  <div class="cards-grid">
+    <div class="anime-card">
+      <div class="card-img">⚔️</div>
+      <div class="card-body">
+        <div class="card-title">Demon Slayer</div>
+        <div class="card-meta">
+          <span class="card-genre">Aksyon / Fantastika</span>
+          <span class="card-rating">★ 9.1</span>
+        </div>
+        <div class="card-desc">Tanjiro oilasini iblis qotilidan himoya qilish uchun kurashadi.</div>
+      </div>
     </div>
-    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
-      <div style="font-size:3rem;">⚔️</div>
-      <h3 style="margin:10px 0 6px;">Demon Slayer</h3>
-      <p style="color:#6ec6f5; font-size:0.85rem;">Aksyon / Fantastika</p>
-      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Tanjiro oilasini himoya qiladi.</p>
+    <div class="anime-card">
+      <div class="card-img">🌊</div>
+      <div class="card-body">
+        <div class="card-title">Attack on Titan</div>
+        <div class="card-meta">
+          <span class="card-genre">Dramatik / Aksyon</span>
+          <span class="card-rating">★ 9.5</span>
+        </div>
+        <div class="card-desc">Insoniyat devlar hujumidan himoya qilib yashashga harakat qiladi.</div>
+      </div>
     </div>
-    <div style="background:#1e1e2e; border-radius:14px; padding:20px; border:1px solid #2a2a3a;">
-      <div style="font-size:3rem;">🌊</div>
-      <h3 style="margin:10px 0 6px;">Attack on Titan</h3>
-      <p style="color:#6ec6f5; font-size:0.85rem;">Dramatik / Aksyon</p>
-      <p style="color:#888899; font-size:0.82rem; margin-top:8px;">Insoniyat devlar hujumidan himoya qiladi.</p>
+    <div class="anime-card">
+      <div class="card-img">🍥</div>
+      <div class="card-body">
+        <div class="card-title">Naruto</div>
+        <div class="card-meta">
+          <span class="card-genre">Aksyon / Sarguzasht</span>
+          <span class="card-rating">★ 8.7</span>
+        </div>
+        <div class="card-desc">Yosh ninja Naruto eng kuchli bo'lish uchun qattiq mashq qiladi.</div>
+      </div>
+    </div>
+    <div class="anime-card">
+      <div class="card-img">🃏</div>
+      <div class="card-body">
+        <div class="card-title">Death Note</div>
+        <div class="card-meta">
+          <span class="card-genre">Misteriya / Psixologik</span>
+          <span class="card-rating">★ 9.0</span>
+        </div>
+        <div class="card-desc">Maxsus daftar topgan Light Yagami dunyo jinoyatchilarini yo'q qilmoqchi.</div>
+      </div>
+    </div>
+    <div class="anime-card">
+      <div class="card-img">🏐</div>
+      <div class="card-body">
+        <div class="card-title">Haikyuu!!</div>
+        <div class="card-meta">
+          <span class="card-genre">Sport / Komediya</span>
+          <span class="card-rating">★ 9.0</span>
+        </div>
+        <div class="card-desc">Past bo'ylik Shoyo voleybol orqali o'z orzusiga erishadi.</div>
+      </div>
+    </div>
+    <div class="anime-card">
+      <div class="card-img">🌸</div>
+      <div class="card-body">
+        <div class="card-title">Your Name</div>
+        <div class="card-meta">
+          <span class="card-genre">Romantika / Fantastika</span>
+          <span class="card-rating">★ 9.3</span>
+        </div>
+        <div class="card-desc">Ikki o'smir tana almashinish orqali bir-birini topa boshlaydi.</div>
+      </div>
+    </div>
+    <div class="anime-card" onclick="document.getElementById('cote-section').scrollIntoView({behavior:'smooth'})" style="border-color: var(--accent);">
+      <div class="card-img" style="background: linear-gradient(135deg, #0d1a2e, #1a0d2e);">🧠</div>
+      <div class="card-body">
+        <div class="card-title">Classroom of the Elite</div>
+        <div class="card-meta">
+          <span class="card-genre">Psixologik / Drama</span>
+          <span class="card-rating">★ 9.2</span>
+        </div>
+        <div class="card-desc">Ayanokoji — eng xavfli daho. Ko'proq o'qish uchun bosing ↓</div>
+      </div>
     </div>
   </div>
 </section>
-
-<footer style="text-align:center; padding:30px; border-top:1px solid #2a2a3a; color:#888899; font-size:0.85rem;">
-  © 2026 AnimeWorld · O'zbek tilida
+<section class="section" id="cote-section" style="background: linear-gradient(180deg, #0d0d14, #0d0a1a, #0d0d14); padding: 60px 40px;">
+  <div class="section-title">🧠 Ayanokoji Kiyotaka — To'liq Ma'lumot</div>
+  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 40px; align-items: start;">
+    <div style="background: var(--card); border: 1px solid var(--accent); border-radius: 16px; padding: 28px; text-align: center;">
+      <div style="font-size: 6rem; margin-bottom: 16px;">🧠</div>
+      <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Ayanokoji Kiyotaka</div>
+      <div style="color: var(--accent2); font-size: 0.9rem; margin-bottom: 20px;">綾小路 清隆</div>
+      <div style="text-align: left; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+          <span style="color: var(--muted);">Anime</span>
+          <span style="font-weight: 700; color: var(--accent);">Elita Sinfi</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+          <span style="color: var(--muted);">Sinf</span>
+          <span style="font-weight: 700;">D-sinf → C-sinf</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+          <span style="color: var(--muted);">Maktab</span>
+          <span style="font-weight: 700; font-size: 0.8rem;">Koudo Ikusei</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+          <span style="color: var(--muted);">Ovoz aktyori (JP)</span>
+          <span style="font-weight: 700;">Shōya Chiba</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+          <span style="color: var(--muted);">Ovoz aktyori (EN)</span>
+          <span style="font-weight: 700;">Justin Briner</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.88rem;">
+          <span style="color: var(--muted);">Taxallus</span>
+          <span style="font-weight: 700; color: var(--accent3);">"X" — Mastermind</span>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+        <h3 style="color: var(--accent2); font-size: 1rem; margin-bottom: 12px;">👤 Kim u?</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">Ayanokoji Kiyotaka — <strong style="color: var(--text);">Elita Sinfi</strong> animesining bosh qahramoni. U dastlab oddiy va e'tiborsiz talaba sifatida ko'rinadi. Kirish imtihonida har bir fanidan ataylab <strong style="color: var(--accent);">100 baldan 50 ball</strong> olgan va D-sinfga joylashtirilgan. Lekin bu hammasi uning rejasining bir qismi edi.</p>
+      </div>
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+        <h3 style="color: var(--accent2); font-size: 1rem; margin-bottom: 12px;">🏛️ White Room — Sirli O'tmish</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">Ayanokoji aslida <strong style="color: var(--text);">White Room</strong> deb atalgan maxfiy tashkilotning eng muvaffaqiyatli mahsuli. Bu tashkilotni uning otasi Atsuomi Ayanokoji yaratgan bo'lib, maqsad — Yaponiyani boshqaradigan mukammal avlod yetishtirish. Kiyotaka ushbu dahshatli tarbiya jarayonidan o'tgan yagona omon qolgan va <strong style="color: var(--accent);">tengsiz aql va jismoniy qobiliyatga</strong> ega bo'lgan shaxs.</p>
+      </div>
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+        <h3 style="color: var(--accent2); font-size: 1rem; margin-bottom: 12px;">🎭 Shaxsiyati</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">U haddan tashqari <strong style="color: var(--text);">sovuqqon va hissiyotsiz</strong>, lekin ichida har bir vaziyatni puxta hisoblaydi. Boshqalarni "qurol" sifatida ko'radi. Mashhur gapi: <span style="color: var(--accent); font-style: italic;">"Odamlar faqat quroldir."</span></p>
+      </div>
+    </div>
+  </div>
+  <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 30px;">
+    <h3 style="color: var(--accent2); font-size: 1rem; margin-bottom: 20px;">📊 Qobiliyatlari</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;"><span>Aql-zakovat</span><span style="color: var(--accent3);">100/100</span></div>
+        <div style="height: 6px; background: var(--border); border-radius: 3px;"><div style="width: 100%; height: 100%; background: var(--accent3); border-radius: 3px;"></div></div>
+      </div>
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;"><span>Jismoniy kuch</span><span style="color: var(--accent);">98/100</span></div>
+        <div style="height: 6px; background: var(--border); border-radius: 3px;"><div style="width: 98%; height: 100%; background: var(--accent); border-radius: 3px;"></div></div>
+      </div>
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;"><span>Manipulyatsiya</span><span style="color: var(--accent2);">100/100</span></div>
+        <div style="height: 6px; background: var(--border); border-radius: 3px;"><div style="width: 100%; height: 100%; background: var(--accent2); border-radius: 3px;"></div></div>
+      </div>
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;"><span>Yashirinish</span><span style="color: var(--accent3);">99/100</span></div>
+        <div style="height: 6px; background: var(--border); border-radius: 3px;"><div style="width: 99%; height: 100%; background: var(--accent3); border-radius: 3px;"></div></div>
+      </div>
+    </div>
+  </div>
+  <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px;">
+    <h3 style="color: var(--accent2); font-size: 1rem; margin-bottom: 20px;">📺 Anime Fasllar</h3>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 16px; padding: 12px; background: var(--surface); border-radius: 10px;">
+        <div style="background: var(--accent); color: #fff; font-weight: 800; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; min-width: 70px; text-align: center;">1-FASL</div>
+        <div><div style="font-weight: 700; font-size: 0.9rem;">2017 yil</div><div style="color: var(--muted); font-size: 0.82rem;">D-sinf siri va Ayanokojiining dastlabki planlari</div></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 12px; background: var(--surface); border-radius: 10px;">
+        <div style="background: var(--accent2); color: #0d0d14; font-weight: 800; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; min-width: 70px; text-align: center;">2-FASL</div>
+        <div><div style="font-weight: 700; font-size: 0.9rem;">2022 yil</div><div style="color: var(--muted); font-size: 0.82rem;">Ryuuen "X"ni izlaydi, Ayanokoji o'zini oshkor qiladi</div></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 12px; background: var(--surface); border-radius: 10px;">
+        <div style="background: var(--accent3); color: #0d0d14; font-weight: 800; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; min-width: 70px; text-align: center;">3-FASL</div>
+        <div><div style="font-weight: 700; font-size: 0.9rem;">2024 yil</div><div style="color: var(--muted); font-size: 0.82rem;">Tsukishiro sabotaji va Sakayanagi bilan to'qnashuv</div></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 12px; background: linear-gradient(90deg, rgba(232,93,117,0.1), transparent); border-radius: 10px; border: 1px solid var(--accent);">
+        <div style="background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 800; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; min-width: 70px; text-align: center;">4-FASL</div>
+        <div><div style="font-weight: 700; font-size: 0.9rem; color: var(--accent);">2026 yil — YANGI! 🔥</div><div style="color: var(--muted); font-size: 0.82rem;">2-kurs boshlanadi. White Roomdan yangi raqib keladi. Crunchyroll'da mavjud</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-title">📚 Anime haqida</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon">🎌</div>
+      <h3>Anime nima?</h3>
+      <p>Anime — Yaponiyada yaratilgan animatsion filmlar va seriallar. So'zi "animation" dan kelib chiqqan bo'lib, Yaponiyada barcha animatsiyani anglatadi.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">📅</div>
+      <h3>Tarix</h3>
+      <p>Yaponiyada animatsiya 1900-yillarning boshida boshlangan. 1960-yillarda Osamu Tezuka "zamonaviy anime otasi" deb tan olingan.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🎬</div>
+      <h3>Anime turlari</h3>
+      <p>Shōnen (o'g'il bolalar uchun), Shōjo (qizlar uchun), Seinen (kattalar uchun), Isekai (boshqa dunyo), Mecha (robotlar) va boshqalar.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🌍</div>
+      <h3>Dunyo bo'yicha</h3>
+      <p>Hozirda 100+ mamlakatda ko'riladi. Netflix, Crunchyroll va boshqa platformalarda millionlab tomoshabinlar bor.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  © 2026 AnimeWorld · Barcha huquqlar himoyalangan · O'zbek tilida
 </footer>
+<script>
+  document.querySelectorAll('.pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+  document.querySelector('.search-bar button').addEventListener('click', () => {
+    const val = document.querySelector('.search-bar input').value.trim();
+    if (val) alert(`"${val}" qidirilmoqda...`);
+  });
+</script>
 </body>
 </html>
